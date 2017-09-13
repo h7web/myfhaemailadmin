@@ -1,0 +1,86 @@
+﻿@model IEnumerable<myfhaemailadmin.Models.report_view>
+
+@{
+    ViewBag.Title = "Email Reports";
+
+}
+<br />
+<center>
+    <input type="button" value="Email Reports" onclick="location.href='@Url.Action("Reports", "Home")'" class="btn btn-default" />
+    &nbsp;
+    <input type="button" value="Client Reports" onclick="location.href='@Url.Action("Reports2", "Home")'" class="btn btn-default" />
+</center>
+<h2>Email Reporting</h2>
+<p>Totals reflect the sum of email sent from now til the time frame specified. These are cumulative, so do NOT try to add all of them together, the final column is the Total since the template was enabled. Templates that are grey are not enabled. </p>
+
+<table width="100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emailid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cnt_24_Hours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cnt_7_Days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cnt_1_Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cnt_6_Months)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        string val = "";
+        string val2 = "";
+        string val2a = "Disabled on ";
+        if (!item.enabled.GetValueOrDefault())
+        {
+            if (item.enable_modified == null)
+            { val2a = "Not yet enabled"; };
+            val = "bgcolor=#999999";
+            val2 = "<font size=1><em>(" + val2a + @Html.DisplayFor(modelItem => item.enable_modified) + ")</em></font>";
+        }
+        <tr @val>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject) @Html.Raw(val2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnt_24_Hours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnt_7_Days)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnt_1_Month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnt_6_Months)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+        </tr>
+    }
+</table>
+<p></p>
+<!--
+<img src="@Url.Action("DrawChart")" alt="Drawing chart with HTML Helper" />
+    -->

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<myfhaemailadmin.Models.lead_counts>
+
+@{
+    ViewBag.Title = "Client Reports";
+
+}
+<br />
+<center>
+    <input type="button" value="Email Reports" onclick="location.href='@Url.Action("Reports", "Home")'" class="btn btn-default" />
+    &nbsp;
+    <input type="button" value="Client Reports" onclick="location.href='@Url.Action("Reports2", "Home")'" class="btn btn-default" />
+</center>
+<h2>Client Reporting</h2>
+<p>Totals reflect the sum of leads associated with a given client and with a given credit rating. 
+    Data is not generated on the fly, but compiled daily. Note that this report pertains only to those clients considered current. </p>
+
+<table width="100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+        </tr>
+    }
+</table>
+<p></p>

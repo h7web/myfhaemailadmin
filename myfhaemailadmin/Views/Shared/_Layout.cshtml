@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MyFHA Mass Email Management</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="http://cloud.tinymce.com/stable/plugins.min.js?apiKey=z3zbkq5em92e9dqjonqwd3i620oqnf0h0ep74mapfu8rq1fv"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqPlot/jquery.jqplot.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqPlot/plugins/jqplot.dateAxisRenderer.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Scripts/jqPlot/jquery.jqplot.css" />
+    <script>tinymce.init({
+    selector: 'textarea',
+    document_base_url: 'http://www.myfha.net/',
+    relative_urls: false,
+    remove_script_host: false,
+    plugins: 'code link image',
+    menubar: 'tools',
+    toolbar: 'bold | italic | underline | strikethrough | alignleft | aligncenter | alignright | alignjustify | fontsizeselect | cut | copy | paste | bullist | numlist | outdent | indent | undo | redo | subscript | superscript | link image'
+    });</script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MyFHA Mass Email Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name.Substring(16)!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MyFHA.net</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

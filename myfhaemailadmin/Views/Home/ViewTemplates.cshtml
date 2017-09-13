@@ -1,0 +1,45 @@
+﻿@model IEnumerable<myfhaemailadmin.Models.email_templates>
+
+@{
+    ViewBag.Title = "View Templates";
+}
+
+<h2>View Templates</h2>
+
+<div>
+    <hr />
+    <table width="1000">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.client_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_on)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.client_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created_on)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.emailid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.emailid })  |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.emailid })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />

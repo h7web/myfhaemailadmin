@@ -1,0 +1,138 @@
+﻿@model myfhaemailadmin.Models.template_client
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string htmlbody = Model.html;
+    string textbody = Model.text;
+//    textbody.ToString().Replace("\n", "");
+}
+
+<script language="javascript">
+
+    function init() {
+        // Clear forms here
+        document.getElementById("toemail").value = "";
+    }
+    window.onload = init;
+
+</script>
+<style>
+    .emailbox{
+        display: inline-block;
+        width: 250px;
+}
+
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Edit Email Template</h4>
+    <hr />
+    @{
+        var errmsg = "";
+        if (ViewData["ErrorMessage"] != null)
+        {
+            errmsg = "<font color=red>" + ViewData["ErrorMessage"] + "</font><br />";
+        }
+    }
+    @Html.Raw(errmsg)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.emailid)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="margin-top:7px;">
+            @Html.DisplayFor(model => model.days, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="margin-top:7px;">
+            @Html.DisplayFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.credit, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="margin-top:7px;">
+            @Html.DisplayFor(model => model.credit, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.subject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+     <div class="form-group">
+         @Html.LabelFor(model => model.html, "Body", htmlAttributes: new { @class = "control-label col-md-2" })
+         <div class="col-md-10">
+             @Html.TextAreaFor(model => model.html, htmlAttributes: new { @class = "form-control" })
+             @Html.ValidationMessageFor(model => model.html, "", new { @class = "text-danger" })
+         </div>
+     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.enabled, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.enabled, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.enabled, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.enable_modified, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.enable_modified, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Update" name="update" class="btn btn-default" />
+            &nbsp;
+            <input type="button" value="Back to List" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-default" />
+            &nbsp;
+            <input type="submit" value="Send Test Email" name="sendemail" class="btn btn-default" />
+            &nbsp;
+            @Html.TextBoxFor(model => model.toemail, new { placeholder="Enter Email", htmlAttributes = new { @class = "form-control emailbox" } })
+        </div>
+    </div>
+</div>
+}
+<!--
+<div class="form-group">
+    @Html.LabelFor(model => model.html, "Body Rendered", htmlAttributes: new { @class = "control-label col-md-2" })
+
+    <div class="col-md-10" style="background:#bed9db; height:150px;margin-bottom:20px;">
+        Html.Raw(htmlbody)
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.text, "Body as Text", htmlAttributes: new { @class = "control-label col-md-2" })
+
+    <div class="col-md-10">
+        <textarea class="form-control">@textbody</textarea>
+    </div>
+</div>
+-->
+<br />
+<br />
+<br />
+<br />
+
+@section Scripts
+{
+@Scripts.Render("~/bundles/jqueryval")
+}
+

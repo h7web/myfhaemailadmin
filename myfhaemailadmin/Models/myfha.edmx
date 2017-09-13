@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="myfhabackendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="contact" Type="varchar" MaxLength="150" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="varchar" MaxLength="50" />
+          <Property Name="reset_hour" Type="varchar" MaxLength="50" />
+          <Property Name="next_reset_time" Type="varchar" MaxLength="50" />
+          <Property Name="daily_limit" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d0" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d1" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d2" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d3" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d4" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d5" Type="varchar" MaxLength="50" />
+          <Property Name="limit_d6" Type="varchar" MaxLength="50" />
+          <Property Name="leads_today" Type="varchar" MaxLength="50" />
+          <Property Name="max_age" Type="varchar" MaxLength="50" />
+          <Property Name="min_downpayment" Type="varchar" MaxLength="50" />
+          <Property Name="email_list" Type="varchar" MaxLength="2000" />
+          <Property Name="credits" Type="varchar" MaxLength="50" />
+          <Property Name="cutoff_amount" Type="varchar" MaxLength="50" />
+          <Property Name="cutoff_mode" Type="varchar" MaxLength="50" />
+          <Property Name="intro_enabled" Type="varchar" MaxLength="50" />
+          <Property Name="intro_from" Type="varchar" MaxLength="50" />
+          <Property Name="intro_subject" Type="varchar" MaxLength="500" />
+          <Property Name="intro_body" Type="varchar(max)" />
+          <Property Name="intro_bcc" Type="varchar" MaxLength="50" />
+          <Property Name="auto_crpost_exclude" Type="varchar" MaxLength="50" />
+          <Property Name="trickle_campaign_exclude" Type="varchar" MaxLength="50" />
+          <Property Name="hubspot_exclude" Type="varchar" MaxLength="50" />
+          <Property Name="grade_filter" Type="varchar" MaxLength="50" />
+          <Property Name="expanded_search_credit_repair" Type="varchar" MaxLength="50" />
+          <Property Name="expanded_start_hour" Type="varchar" MaxLength="50" />
+          <Property Name="expanded_end_hour" Type="varchar" MaxLength="50" />
+          <Property Name="expanded_timezone" Type="varchar" MaxLength="150" />
+          <Property Name="consume_ascent_rejects_only" Type="varchar" MaxLength="50" />
+          <Property Name="currentflag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="email_templates">
+          <Key>
+            <PropertyRef Name="emailid" />
+          </Key>
+          <Property Name="emailid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="html" Type="nvarchar(max)" />
+          <Property Name="days" Type="int" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="credit" Type="nvarchar" MaxLength="50" />
+          <Property Name="created_on" Type="date" />
+          <Property Name="last_modified" Type="date" />
+          <Property Name="enabled" Type="bit" />
+          <Property Name="enable_modified" Type="date" />
+        </EntityType>
+        <EntityType Name="lead_counts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Client" Type="nvarchar" MaxLength="50" />
+          <Property Name="ex" Type="int" />
+          <Property Name="gd" Type="int" />
+          <Property Name="sp" Type="int" />
+          <Property Name="mp" Type="int" />
+          <Property Name="sc" Type="int" />
+          <Property Name="total" Type="int" />
+        </EntityType>
+        <EntityType Name="myfhaleads">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="state_id" Type="varchar" MaxLength="50" />
+          <Property Name="create_time" Type="varchar" MaxLength="50" />
+          <Property Name="ip" Type="varchar" MaxLength="50" />
+          <Property Name="hubspot_cookie" Type="varchar" MaxLength="50" />
+          <Property Name="hubspot_posted" Type="varchar" MaxLength="50" />
+          <Property Name="site" Type="varchar" MaxLength="50" />
+          <Property Name="client_id" Type="varchar" MaxLength="50" />
+          <Property Name="sold_time" Type="varchar" MaxLength="50" />
+          <Property Name="free" Type="varchar" MaxLength="50" />
+          <Property Name="cam_step" Type="varchar" MaxLength="50" />
+          <Property Name="cam_due" Type="varchar" MaxLength="50" />
+          <Property Name="cam_last_email_time" Type="varchar" MaxLength="50" />
+          <Property Name="firstname" Type="varchar" MaxLength="150" />
+          <Property Name="lastname" Type="varchar" MaxLength="150" />
+          <Property Name="street" Type="varchar" MaxLength="150" />
+          <Property Name="city" Type="varchar" MaxLength="150" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="zip" Type="varchar" MaxLength="50" />
+          <Property Name="loantype" Type="varchar" MaxLength="50" />
+          <Property Name="proptype" Type="varchar" MaxLength="50" />
+          <Property Name="loanamount" Type="varchar" MaxLength="50" />
+          <Property Name="inttype" Type="varchar" MaxLength="50" />
+          <Property Name="spechome" Type="varchar" MaxLength="50" />
+          <Property Name="propstate" Type="varchar" MaxLength="50" />
+          <Property Name="downpayment" Type="varchar" MaxLength="50" />
+          <Property Name="value" Type="varchar" MaxLength="50" />
+          <Property Name="balance" Type="varchar" MaxLength="50" />
+          <Property Name="rate" Type="varchar" MaxLength="50" />
+          <Property Name="workphone" Type="varchar" MaxLength="150" />
+          <Property Name="homephone" Type="varchar" MaxLength="150" />
+          <Property Name="cellphone" Type="varchar" MaxLength="150" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+          <Property Name="calltime" Type="varchar" MaxLength="50" />
+          <Property Name="credit" Type="varchar" MaxLength="50" />
+          <Property Name="notes" Type="varchar" MaxLength="2000" />
+          <Property Name="srlp" Type="varchar" MaxLength="50" />
+          <Property Name="hash" Type="varchar" MaxLength="500" />
+          <Property Name="trusted_form_url" Type="varchar" MaxLength="500" />
+          <Property Name="grade" Type="varchar" MaxLength="50" />
+          <Property Name="expanded_search_credit_repair" Type="varchar" MaxLength="50" />
+          <Property Name="householdincome" Type="varchar" MaxLength="50" />
+          <Property Name="sr_token" Type="varchar" MaxLength="50" />
+          <Property Name="bounced" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sentlog">
+          <Key>
+            <PropertyRef Name="esid" />
+          </Key>
+          <Property Name="esid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emailid" Type="int" />
+          <Property Name="day" Type="date" />
+          <Property Name="num" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'myfhabackend.dbo.report_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="report_view">
+          <Key>
+            <PropertyRef Name="emailid" />
+            <PropertyRef Name="cnt_24_Hours" />
+            <PropertyRef Name="cnt_7_Days" />
+            <PropertyRef Name="cnt_1_Month" />
+            <PropertyRef Name="cnt_6_Months" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="emailid" Type="int" Nullable="false" />
+          <Property Name="Client" Type="varchar" MaxLength="150" />
+          <Property Name="subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="cnt_24_Hours" Type="int" Nullable="false" />
+          <Property Name="cnt_7_Days" Type="int" Nullable="false" />
+          <Property Name="cnt_1_Month" Type="int" Nullable="false" />
+          <Property Name="cnt_6_Months" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="enabled" Type="bit" />
+          <Property Name="enable_modified" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'myfhabackend.dbo.template_client' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="template_client">
+          <Key>
+            <PropertyRef Name="emailid" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="emailid" Type="int" Nullable="false" />
+          <Property Name="subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="html" Type="nvarchar(max)" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="credit" Type="nvarchar" MaxLength="50" />
+          <Property Name="days" Type="int" />
+          <Property Name="created_on" Type="date" />
+          <Property Name="last_modified" Type="date" />
+          <Property Name="enabled" Type="bit" />
+          <Property Name="enable_modified" Type="date" />
+          <Property Name="cnt" Type="int" />
+        </EntityType>
+        <Association Name="FK_email_templates_clients">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="email_templates" Type="Self.email_templates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_templates">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="myfhabackendModelStoreContainer">
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="email_templates" EntityType="Self.email_templates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lead_counts" EntityType="Self.lead_counts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="myfhaleads" EntityType="Self.myfhaleads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sentlog" EntityType="Self.sentlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="report_view" EntityType="Self.report_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [report_view].[emailid] AS [emailid], 
+    [report_view].[Client] AS [Client], 
+    [report_view].[subject] AS [subject], 
+    [report_view].[cnt_24_Hours] AS [cnt_24_Hours], 
+    [report_view].[cnt_7_Days] AS [cnt_7_Days], 
+    [report_view].[cnt_1_Month] AS [cnt_1_Month], 
+    [report_view].[cnt_6_Months] AS [cnt_6_Months], 
+    [report_view].[Total] AS [Total], 
+    [report_view].[enabled] AS [enabled], 
+    [report_view].[enable_modified] AS [enable_modified]
+    FROM [dbo].[report_view] AS [report_view]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="template_client" EntityType="Self.template_client" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [template_client].[name] AS [name], 
+    [template_client].[emailid] AS [emailid], 
+    [template_client].[subject] AS [subject], 
+    [template_client].[text] AS [text], 
+    [template_client].[html] AS [html], 
+    [template_client].[client_id] AS [client_id], 
+    [template_client].[credit] AS [credit], 
+    [template_client].[days] AS [days], 
+    [template_client].[created_on] AS [created_on], 
+    [template_client].[last_modified] AS [last_modified], 
+    [template_client].[enabled] AS [enabled], 
+    [template_client].[enable_modified] AS [enable_modified], 
+    [template_client].[cnt] AS [cnt]
+    FROM [dbo].[template_client] AS [template_client]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_email_templates_clients" Association="Self.FK_email_templates_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="email_templates" EntitySet="email_templates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="myfhabackendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="email_templates">
+          <Key>
+            <PropertyRef Name="emailid" />
+          </Key>
+          <Property Name="emailid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="html" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="days" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="credit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="created_on" Type="DateTime" Precision="0" />
+          <Property Name="last_modified" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="client" Relationship="myfhabackendModel.FK_email_templates_clients" FromRole="email_templates" ToRole="client" />
+          <Property Name="enabled" Type="Boolean" />
+          <Property Name="enable_modified" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="myfhabackendEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="email_templates" EntityType="Self.email_templates" />
+          <EntitySet Name="clients" EntityType="myfhabackendModel.client" />
+          <EntitySet Name="myfhaleads" EntityType="myfhabackendModel.myfhalead" />
+          <AssociationSet Name="FK_email_templates_clients" Association="myfhabackendModel.FK_email_templates_clients">
+            <End Role="client" EntitySet="clients" />
+            <End Role="email_templates" EntitySet="email_templates" />
+          </AssociationSet>
+          <EntitySet Name="template_client" EntityType="myfhabackendModel.template_client" />
+          <EntitySet Name="report_view" EntityType="myfhabackendModel.report_view" />
+          <EntitySet Name="sentlogs" EntityType="myfhabackendModel.sentlog" />
+          <EntitySet Name="lead_counts" EntityType="myfhabackendModel.lead_counts" />
+        </EntityContainer>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reset_hour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="next_reset_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="daily_limit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d0" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="limit_d6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="leads_today" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="max_age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="min_downpayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_list" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="credits" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cutoff_amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cutoff_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="intro_enabled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="intro_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="intro_subject" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="intro_body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="intro_bcc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="auto_crpost_exclude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trickle_campaign_exclude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hubspot_exclude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="grade_filter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expanded_search_credit_repair" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expanded_start_hour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expanded_end_hour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expanded_timezone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="consume_ascent_rejects_only" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="email_templates" Relationship="myfhabackendModel.FK_email_templates_clients" FromRole="client" ToRole="email_templates" />
+          <Property Name="currentflag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="myfhalead">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="create_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hubspot_cookie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hubspot_posted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sold_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="free" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cam_step" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cam_due" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cam_last_email_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="street" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loantype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="proptype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="loanamount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="inttype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="spechome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="propstate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="downpayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="workphone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="homephone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="cellphone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="calltime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="credit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="srlp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hash" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="trusted_form_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expanded_search_credit_repair" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="householdincome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sr_token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bounced" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_email_templates_clients">
+          <End Type="myfhabackendModel.client" Role="client" Multiplicity="0..1" />
+          <End Type="myfhabackendModel.email_templates" Role="email_templates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_templates">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="template_client">
+          <Key>
+            <PropertyRef Name="emailid" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="Int32" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="html" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="credit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="days" Type="Int32" />
+          <Property Name="created_on" Type="DateTime" Precision="0" />
+          <Property Name="last_modified" Type="DateTime" Precision="0" />
+          <Property Name="enabled" Type="Boolean" />
+          <Property Name="enable_modified" Type="DateTime" Precision="0" />
+          <Property Name="cnt" Type="Int32" />
+        </EntityType>
+        <EntityType Name="report_view">
+          <Key>
+            <PropertyRef Name="emailid" />
+            <PropertyRef Name="cnt_24_Hours" />
+            <PropertyRef Name="cnt_7_Days" />
+            <PropertyRef Name="cnt_1_Month" />
+            <PropertyRef Name="cnt_6_Months" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="emailid" Type="Int32" Nullable="false" />
+          <Property Name="Client" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="cnt_24_Hours" Type="Int32" Nullable="false" />
+          <Property Name="cnt_7_Days" Type="Int32" Nullable="false" />
+          <Property Name="cnt_1_Month" Type="Int32" Nullable="false" />
+          <Property Name="cnt_6_Months" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="enabled" Type="Boolean" />
+          <Property Name="enable_modified" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sentlog">
+          <Key>
+            <PropertyRef Name="esid" />
+          </Key>
+          <Property Name="esid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emailid" Type="Int32" />
+          <Property Name="day" Type="DateTime" Precision="0" />
+          <Property Name="num" Type="Int32" />
+        </EntityType>
+        <EntityType Name="lead_counts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ex" Type="Int32" />
+          <Property Name="gd" Type="Int32" />
+          <Property Name="sp" Type="Int32" />
+          <Property Name="mp" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="sc" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="myfhabackendModelStoreContainer" CdmEntityContainer="myfhabackendEntities">
+          <EntitySetMapping Name="email_templates">
+            <EntityTypeMapping TypeName="myfhabackendModel.email_templates">
+              <MappingFragment StoreEntitySet="email_templates">
+                <ScalarProperty Name="enable_modified" ColumnName="enable_modified" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="html" ColumnName="html" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="created_on" ColumnName="created_on" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="myfhabackendModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="currentflag" ColumnName="currentflag" />
+                <ScalarProperty Name="consume_ascent_rejects_only" ColumnName="consume_ascent_rejects_only" />
+                <ScalarProperty Name="expanded_timezone" ColumnName="expanded_timezone" />
+                <ScalarProperty Name="expanded_end_hour" ColumnName="expanded_end_hour" />
+                <ScalarProperty Name="expanded_start_hour" ColumnName="expanded_start_hour" />
+                <ScalarProperty Name="expanded_search_credit_repair" ColumnName="expanded_search_credit_repair" />
+                <ScalarProperty Name="grade_filter" ColumnName="grade_filter" />
+                <ScalarProperty Name="hubspot_exclude" ColumnName="hubspot_exclude" />
+                <ScalarProperty Name="trickle_campaign_exclude" ColumnName="trickle_campaign_exclude" />
+                <ScalarProperty Name="auto_crpost_exclude" ColumnName="auto_crpost_exclude" />
+                <ScalarProperty Name="intro_bcc" ColumnName="intro_bcc" />
+                <ScalarProperty Name="intro_body" ColumnName="intro_body" />
+                <ScalarProperty Name="intro_subject" ColumnName="intro_subject" />
+                <ScalarProperty Name="intro_from" ColumnName="intro_from" />
+                <ScalarProperty Name="intro_enabled" ColumnName="intro_enabled" />
+                <ScalarProperty Name="cutoff_mode" ColumnName="cutoff_mode" />
+                <ScalarProperty Name="cutoff_amount" ColumnName="cutoff_amount" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="email_list" ColumnName="email_list" />
+                <ScalarProperty Name="min_downpayment" ColumnName="min_downpayment" />
+                <ScalarProperty Name="max_age" ColumnName="max_age" />
+                <ScalarProperty Name="leads_today" ColumnName="leads_today" />
+                <ScalarProperty Name="limit_d6" ColumnName="limit_d6" />
+                <ScalarProperty Name="limit_d5" ColumnName="limit_d5" />
+                <ScalarProperty Name="limit_d4" ColumnName="limit_d4" />
+                <ScalarProperty Name="limit_d3" ColumnName="limit_d3" />
+                <ScalarProperty Name="limit_d2" ColumnName="limit_d2" />
+                <ScalarProperty Name="limit_d1" ColumnName="limit_d1" />
+                <ScalarProperty Name="limit_d0" ColumnName="limit_d0" />
+                <ScalarProperty Name="daily_limit" ColumnName="daily_limit" />
+                <ScalarProperty Name="next_reset_time" ColumnName="next_reset_time" />
+                <ScalarProperty Name="reset_hour" ColumnName="reset_hour" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="myfhaleads">
+            <EntityTypeMapping TypeName="myfhabackendModel.myfhalead">
+              <MappingFragment StoreEntitySet="myfhaleads">
+                <ScalarProperty Name="bounced" ColumnName="bounced" />
+                <ScalarProperty Name="sr_token" ColumnName="sr_token" />
+                <ScalarProperty Name="householdincome" ColumnName="householdincome" />
+                <ScalarProperty Name="expanded_search_credit_repair" ColumnName="expanded_search_credit_repair" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="trusted_form_url" ColumnName="trusted_form_url" />
+                <ScalarProperty Name="hash" ColumnName="hash" />
+                <ScalarProperty Name="srlp" ColumnName="srlp" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="calltime" ColumnName="calltime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+                <ScalarProperty Name="homephone" ColumnName="homephone" />
+                <ScalarProperty Name="workphone" ColumnName="workphone" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="downpayment" ColumnName="downpayment" />
+                <ScalarProperty Name="propstate" ColumnName="propstate" />
+                <ScalarProperty Name="spechome" ColumnName="spechome" />
+                <ScalarProperty Name="inttype" ColumnName="inttype" />
+                <ScalarProperty Name="loanamount" ColumnName="loanamount" />
+                <ScalarProperty Name="proptype" ColumnName="proptype" />
+                <ScalarProperty Name="loantype" ColumnName="loantype" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="cam_last_email_time" ColumnName="cam_last_email_time" />
+                <ScalarProperty Name="cam_due" ColumnName="cam_due" />
+                <ScalarProperty Name="cam_step" ColumnName="cam_step" />
+                <ScalarProperty Name="free" ColumnName="free" />
+                <ScalarProperty Name="sold_time" ColumnName="sold_time" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="hubspot_posted" ColumnName="hubspot_posted" />
+                <ScalarProperty Name="hubspot_cookie" ColumnName="hubspot_cookie" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="template_client">
+            <EntityTypeMapping TypeName="myfhabackendModel.template_client">
+              <MappingFragment StoreEntitySet="template_client">
+                <ScalarProperty Name="cnt" ColumnName="cnt" />
+                <ScalarProperty Name="enable_modified" ColumnName="enable_modified" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+                <ScalarProperty Name="created_on" ColumnName="created_on" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="html" ColumnName="html" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="report_view">
+            <EntityTypeMapping TypeName="myfhabackendModel.report_view">
+              <MappingFragment StoreEntitySet="report_view">
+                <ScalarProperty Name="enable_modified" ColumnName="enable_modified" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="cnt_6_Months" ColumnName="cnt_6_Months" />
+                <ScalarProperty Name="cnt_1_Month" ColumnName="cnt_1_Month" />
+                <ScalarProperty Name="cnt_7_Days" ColumnName="cnt_7_Days" />
+                <ScalarProperty Name="cnt_24_Hours" ColumnName="cnt_24_Hours" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sentlogs">
+            <EntityTypeMapping TypeName="myfhabackendModel.sentlog">
+              <MappingFragment StoreEntitySet="sentlog">
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="esid" ColumnName="esid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lead_counts">
+            <EntityTypeMapping TypeName="myfhabackendModel.lead_counts">
+              <MappingFragment StoreEntitySet="lead_counts">
+                <ScalarProperty Name="sc" ColumnName="sc" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="mp" ColumnName="mp" />
+                <ScalarProperty Name="sp" ColumnName="sp" />
+                <ScalarProperty Name="gd" ColumnName="gd" />
+                <ScalarProperty Name="ex" ColumnName="ex" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
