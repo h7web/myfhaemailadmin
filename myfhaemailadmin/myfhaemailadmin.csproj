@@ -332,6 +332,7 @@
     <Content Include="Views\Home\Delete.cshtml" />
     <Content Include="Views\Home\Reports.cshtml" />
     <Content Include="Views\Home\Reports2.cshtml" />
+    <Content Include="secret_connectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
