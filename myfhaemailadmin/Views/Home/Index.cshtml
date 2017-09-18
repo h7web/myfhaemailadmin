@@ -14,72 +14,72 @@
 <div class="row">
 
 
-<h2>View Templates</h2>
+    <h2>View Templates</h2>
     <p>All enabled templates will be run daily. Note that templates that are grey are not enabled. </p>
-<div>
-    <hr />
-    <table width="100%">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.client_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.days)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.credit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.created_on)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.last_modified)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            string val = "";
-            if (!item.enabled)
-            {
-                val = "bgcolor=#bbbbbb";
-            }
-                <tr @val>
-                <td>
-                    @Html.DisplayFor(modelItem => item.subject)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.days)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.credit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.created_on)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.last_modified)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.emailid }) 
-
-                    @{ if (item.cnt == null) {
-                    @: | 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.emailid });
-                     }
-                    }
-                </td>
+    <div>
+        <hr />
+        <table width="100%">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.client_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.days)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.credit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.created_on)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.last_modified)
+                </th>
+                <th></th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model)
+            {
+                string val = "";
+                if (!item.enabled)
+                {
+                    val = "bgcolor=#bbbbbb";
+                }
+                <tr @val>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.credit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_on)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.last_modified)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.emailid })
+
+                        @if (item.cnt == null)
+                        {
+                            @: |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.emailid });
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        @Html.ActionLink("Add New Template", "Create")
+    </div>
     <br />
-    @Html.ActionLink("Add New Template", "Create")
-</div>
-<br />
 </div>
